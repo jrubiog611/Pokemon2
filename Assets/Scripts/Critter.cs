@@ -1,26 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Critter : MonoBehaviour
 {
+    [Header("Name")]
     [SerializeField]
     private string critterName;
 
     [Header("Base Stats")]
     [SerializeField]
-    private float baseAtk, 
-        baseDef, 
-        baseSpd, 
-        baseHp;
+    [Range(10,100)]
+    private int baseAtk;
+    [SerializeField]
+    [Range(10, 100)]
+    private int baseDef;
+    [SerializeField]
+    [Range(1, 50)]
+    private int baseSpd;
+    [SerializeField]
+    private float baseHp;
 
-    [Header("Afinity")]
+    [Header("Affinity")]
     [SerializeField]
     private Affinity affinity;
 
+
     [Header("Skill Set")]
+    //[SerializeField]
+    //private SkillSet skills;
     [SerializeField]
-    private Skill skill1, skill2, skill3;
+    private Skill skill1;
+    [SerializeField]
+    private Skill skill2;
+    [SerializeField]
+    private Skill skill3;
 
     
 

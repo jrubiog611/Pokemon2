@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+public abstract class Skill : MonoBehaviour
 {
+    [SerializeField]
+    private SkillType skillType;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,10 @@ public class Skill : MonoBehaviour
     {
         
     }
+}
+
+public enum SkillType
+{
+    AttackSkill,
+    SupportSkill
 }
