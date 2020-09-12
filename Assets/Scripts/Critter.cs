@@ -31,11 +31,7 @@ public class Critter : MonoBehaviour
     //[SerializeField]
     //private SkillSet skills;
     [SerializeField]
-    private Skill skill1;
-    [SerializeField]
-    private Skill skill2;
-    [SerializeField]
-    private Skill skill3;
+    private SkillSet skills;
 
     
 
@@ -44,7 +40,8 @@ public class Critter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print(critterName);
+        skills.SetupAllSkills();
+        skills.UseAllSkill();
     }
 
     // Update is called once per frame
@@ -52,6 +49,7 @@ public class Critter : MonoBehaviour
     {
         
     }
+
 }
 
 public enum Affinity

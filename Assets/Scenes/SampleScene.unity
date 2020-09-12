@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -145,8 +146,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -193,7 +195,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.078125, y: 0.06640625, z: 0.02734375, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0, y: 9.26e-42, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -304,8 +306,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1005715957}
   - component: {fileID: 1005715956}
+  - component: {fileID: 1005715958}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: critter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,14 +327,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   critterName: 
-  baseAtk: 0
-  baseDef: 0
-  baseSpd: 0
+  baseAtk: 10
+  baseDef: 10
+  baseSpd: 1
   baseHp: 0
   affinity: 0
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill3: {fileID: 0}
+  skills: {fileID: 1005715958}
 --- !u!4 &1005715957
 Transform:
   m_ObjectHideFlags: 0
@@ -346,3 +347,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005715958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005715955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bac554618cd1ca45953a0655ad55dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill1: {fileID: 4609907032197123853, guid: d0a7be903b9f2bd46b53a3ff9b201502, type: 3}
+  skill2: {fileID: 4150873290228815408, guid: bb4c9e52791235b4ba8e5f678ca6ab5c, type: 3}
+  skill3: {fileID: 3288256940076024928, guid: 8cef123333c2ecb4682e507e1c73185d, type: 3}

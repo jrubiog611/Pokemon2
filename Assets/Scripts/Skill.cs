@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Skill : MonoBehaviour
 {
     [SerializeField]
-    private SkillType skillType;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected string skillName;
+    [SerializeField]
+    protected SkillType skillType;
+    [SerializeField]
+    protected Affinity skillAffinity;
+    //[SerializeField]
+    protected float skillPower;
+    [SerializeField]
+    protected string description;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    public Action OnSkill;
+    public abstract void Setup();
 }
+
+
+
 
 public enum SkillType
 {
