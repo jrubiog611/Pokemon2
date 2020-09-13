@@ -25,21 +25,11 @@ public class SkillSet : MonoBehaviour
         }
          
     }
-    // Start is called before the first frame update
-    void Awake()
-    {
-        owner = transform.GetComponent<Critter>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void SetupAllSkills()
     {
+        owner = transform.GetComponent<Critter>();
         skills.Add(Instantiate(skill1,transform));
         skills.Add(Instantiate(skill2,transform));
         skills.Add(Instantiate(skill3,transform));
