@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Text WinnerScreen;
     public Critter Critter1;
 
     public Critter Critter2;
@@ -11,8 +14,11 @@ public class GameManager : MonoBehaviour
     static GameManager instance;
 
     public SkillButton[] skillButtons;
+    public Transform PlayerCritterPoint, EnemyCritterPoint;
 
+    public Action IaTurnBegins;
     public static GameManager Instance { get => instance; }
+
 
 
     private void Awake()
@@ -61,6 +67,32 @@ public class GameManager : MonoBehaviour
             return;
         }
         Debug.LogError("The critter: " + critter.name + "that are you trying to remove is not in combat");
+    }
+    public void IAWins()
+    {
+        WinnerScreen.gameObject.SetActive(true);
+        WinnerScreen.text = "IA Wins";
+    }
+    public void PlayerWins()
+    {
+        WinnerScreen.gameObject.SetActive(true);
+        WinnerScreen.text = "Player Wins";
+    }
+    public void PlayerTurnEnd()
+    {
+        foreach (var item in skillButtons)
+        {
+            item.button.interactable = false;
+        }
+        IaTurnBegins?.Invoke();
+    }
+
+    public void PlayerTurnBegins()
+    {
+        foreach (var item in skillButtons)
+        {
+            item.button.interactable = true;
+        }
     }
 
 }

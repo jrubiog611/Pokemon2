@@ -8,27 +8,38 @@ public class Health : MonoBehaviour
     private Critter critter;
     private Affinity critterAf;
     public float currentHealth;
+    private SpriteRenderer critterSprite;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        critter = transform.GetComponent<Critter>();
+        critter = GetComponent<Critter>();
         critterAf = critter.Affinity;
         currentHealth = critter.BaseHp;
+        critterSprite = GetComponent<SpriteRenderer>();
     }
     public void TakeDamage(float amout, Affinity atkType)
     {
         currentHealth -= amout * AffinityMultiplier.Multiplier(critterAf, atkType);
+        critterSprite.color = Color.red;
+        StartCoroutine(RestoreColor());
         if (currentHealth <= 0)
         {
             ImDead();
         }
+        
     }
 
     private void ImDead()
     {
         critter.Owner.RemoveCritter(critter);
+    }
+
+    private IEnumerator RestoreColor()
+    {
+        yield return new WaitForSeconds(0.5f);
+        critterSprite.color = Color.white;
     }
 }
 

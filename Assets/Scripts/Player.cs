@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -17,10 +18,13 @@ public class Player : MonoBehaviour
     private Critter currentCritter;
     private int CrittersLeft, currentCritterIndex;
     [SerializeField]
-    private bool isAI;
-
+    private bool isIA;
     void Start()
     {
+        if (isIA)
+        {
+            GameManager.Instance.IaTurnBegins += IATurnBegin;
+        }
         team = new Critter[] { Instantiate(critter1,transform).GetComponent<Critter>(),
             Instantiate(critter2, transform).GetComponent<Critter>(),
             Instantiate(critter3, transform).GetComponent<Critter>() };
@@ -31,9 +35,16 @@ public class Player : MonoBehaviour
         {
             team[i].Owner = this;
             team[i].gameObject.SetActive(false);
+            if (!isIA)
+            {
+                team[i].transform.localScale = new Vector3(-team[i].transform.localScale.x, team[i].transform.localScale.y, team[i].transform.localScale.z);
+                team[i].transform.position = GameManager.Instance.PlayerCritterPoint.position;
+            }
+            else
+                team[i].transform.position = GameManager.Instance.EnemyCritterPoint.position;
         }
-
         InvokeCritter(team[0]);
+
     }
 
 
@@ -45,7 +56,12 @@ public class Player : MonoBehaviour
         currentCritterIndex++;
         if (CrittersLeft == 0)
         {
-            print("perdi");
+            if (isIA)
+            {
+                GameManager.Instance.PlayerWins();
+            }
+            else
+                GameManager.Instance.IAWins();
         }
         else
         {
@@ -57,7 +73,7 @@ public class Player : MonoBehaviour
         currentCritter = critterToInvoke;
         currentCritter.gameObject.SetActive(true);
         GameManager.Instance.SetCombatCritter(currentCritter);
-        if (!isAI)
+        if (!isIA)
         {
             AssingSkillsToButtons();
         }
@@ -69,16 +85,38 @@ public class Player : MonoBehaviour
         {
             SkillButton skillbutton = GameManager.Instance.skillButtons[i];
             Skill skill = currentCritter.skillList.Skills[i];
+            skillbutton.onSkill = null;
             skillbutton.skillName.text = skill.GetSkillName;
             skillbutton.skillDescription.text = skill.GetDescription;
-            skillbutton.button.onClick.AddListener(skill.OnSkill);
-            skill.OnSkill();
+            skillbutton.onSkill += skill.OnSkill;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+    #region IA
+
+    private void IATurnBegin()
+    {
+        if (CrittersLeft == 0)
+        {
+            //
+            return;
+        }
+        StartCoroutine(IATurn());
     }
+
+    private void IAUsingSkill(int index)
+    {
+        currentCritter.skillList.Skills[index].OnSkill();
+    }
+    private IEnumerator IATurn()
+    {
+        yield return new WaitForSeconds(1);
+        int skillIndex = UnityEngine.Random.Range(0,3);
+        print(skillIndex);
+        IAUsingSkill(skillIndex);
+        GameManager.Instance.PlayerTurnBegins();
+    }
+
+    #endregion
 }
