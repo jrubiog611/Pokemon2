@@ -604,7 +604,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.9655e-41, z: 0, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: 6.98e-43, y: 1024.8916, z: 6.96e-43, w: 0.00000000118402}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -818,7 +818,7 @@ MonoBehaviour:
     type: 3}
   critter3: {fileID: 3586661973333540109, guid: 3da9436386783f24783fcc1065483a7a,
     type: 3}
-  isIA: 0
+  isIA: 1
 --- !u!4 &1021357793
 Transform:
   m_ObjectHideFlags: 0
