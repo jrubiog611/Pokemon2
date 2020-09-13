@@ -14,5 +14,6 @@ public class Skill3 : AtkSkill
         Health enemyHealth = GameManager.Instance.GetEnemy(owner).GetComponent<Health>();
         float dmg = owner.BaseAtk + skillPower;
         enemyHealth.TakeDamage(dmg, skillAffinity);
+        anim.SetTrigger("Play");
     }
 }

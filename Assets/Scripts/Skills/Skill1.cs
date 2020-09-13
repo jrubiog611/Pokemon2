@@ -14,6 +14,7 @@ public class Skill1 : SuppSkill
         print("skill Name: " + skillName + "\n" + "Skill type: " + skillType + "\n" + "Skill Affinity: " + skillAffinity + "\n" + "Skill power: " + skillPower + "\n" 
             + "Description: " + description + "\n");
         owner.ModifyAtk(20);
+        anim.SetTrigger("Play");
         // spdDown
         //GameManager.Instance.GetEnemy(owner).ModifySpd(-30);
 

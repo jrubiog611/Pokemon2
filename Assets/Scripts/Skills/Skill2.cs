@@ -10,10 +10,12 @@ public class Skill2 : AtkSkill
     }
     private void UsingSkill()
     {
+
         print("skill Name: " + skillName + "\n" + "Skill type: " + skillType + "\n" + "Skill Affinity: " + skillAffinity + "\n" + "Skill power: " + skillPower + "\n" + "Description: " + description + "\n");
         Health enemyHealth = GameManager.Instance.GetEnemy(owner).GetComponent<Health>();
         float dmg = owner.BaseAtk + skillPower;
         enemyHealth.TakeDamage(dmg, skillAffinity);
+        anim.SetTrigger("Play");
     }
 
 }

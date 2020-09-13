@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Transform PlayerCritterPoint, EnemyCritterPoint;
 
     public Action IaTurnBegins;
+
+    public RectTransform PlayerCritterCount, IACritterCount;
     public static GameManager Instance { get => instance; }
 
 
@@ -84,9 +86,13 @@ public class GameManager : MonoBehaviour
         {
             item.button.interactable = false;
         }
+        StartCoroutine(EndPlayerTurn());
+    }
+    private IEnumerator EndPlayerTurn()
+    {
+        yield return new WaitForSeconds(0.7f);
         IaTurnBegins?.Invoke();
     }
-
     public void PlayerTurnBegins()
     {
         foreach (var item in skillButtons)

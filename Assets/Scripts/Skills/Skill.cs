@@ -18,6 +18,8 @@ public abstract class Skill : MonoBehaviour
     [SerializeField]
     protected Critter owner;
 
+    protected Animator anim;
+
     public string GetSkillName
     {
         get
@@ -38,6 +40,11 @@ public abstract class Skill : MonoBehaviour
     public abstract void Setup(Critter owner);
 
     public abstract void SetupSkill();
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
 }
 
 

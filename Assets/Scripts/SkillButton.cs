@@ -16,7 +16,7 @@ public class SkillButton : MonoBehaviour
     }
     public void ExecuteSkillButton()
     {
-        onSkill?.Invoke();
+        onSkill?.Invoke(); 
         GameManager.Instance.PlayerTurnEnd();
     }
 }

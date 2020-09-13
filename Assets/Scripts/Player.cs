@@ -67,7 +67,16 @@ public class Player : MonoBehaviour
         {
             InvokeCritter(team[currentCritterIndex]);
         }
+        if (isIA)
+        {
+            GameManager.Instance.IACritterCount.sizeDelta -= new Vector2(20, 0);
+        }
+        else
+        {
+            GameManager.Instance.PlayerCritterCount.sizeDelta -= new Vector2(20, 0);
+        }
     }
+
     public void InvokeCritter(Critter critterToInvoke)
     {
         currentCritter = critterToInvoke;
@@ -115,6 +124,7 @@ public class Player : MonoBehaviour
         int skillIndex = UnityEngine.Random.Range(0,3);
         print(skillIndex);
         IAUsingSkill(skillIndex);
+        yield return new WaitForSeconds(0.7f);
         GameManager.Instance.PlayerTurnBegins();
     }
 
