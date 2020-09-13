@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435bc66b4ef8e6242a94a1bd073b346a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: WindSlash
+  skillName: Atk Up
   skillType: 1
-  skillAffinity: 1
-  skillPower: 0
-  description: Mejora la velocidad de movimiento en un 20%
+  skillAffinity: 4
+  description: Mejora el atk
+  owner: {fileID: 0}

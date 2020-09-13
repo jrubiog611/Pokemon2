@@ -5,33 +5,20 @@ using UnityEngine;
 
 public class Skill1 : SuppSkill
 {
-    //[SerializeField]
-    //private string skillName;
-
-    //[SerializeField]
-    //private string description;
-
-    // Start is called before the first frame update
-    public override void Setup()
+    public override void SetupSkill()
     {
-        base.Setup();
-        SetupSkill();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SetupSkill()
-    {
-        skillName = skillName;
-        //_description = description;
         OnSkill += Skillsita1;
     }
-
     private void Skillsita1()
     {
-        print("skill Name: " + skillName + "\n" + "Skill type: " + skillType + "\n" + "Skill Affinity: " + skillAffinity + "\n" + "Skill power: " + skillPower + "\n" + "Description: " + description + "\n");
+        print("skill Name: " + skillName + "\n" + "Skill type: " + skillType + "\n" + "Skill Affinity: " + skillAffinity + "\n" + "Skill power: " + skillPower + "\n" 
+            + "Description: " + description + "\n");
+        owner.ModifyAtk(20);
+        // spdDown
+        //GameManager.Instance.GetEnemy(owner).ModifySpd(-30);
+
+        // Def Up
+        //owner.ModifyDef(20);
     }
+
 }

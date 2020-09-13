@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252bde63343f4be47b70f8a7248d8e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 0
-  skillAffinity: 3
-  atkSkillPower: 7
   skillName: bola de tierra
+  skillType: 0
+  skillAffinity: 5
   description: Lanza una bola de tierra al critter enemigo y lo stunea por 2 turnos
+  owner: {fileID: 0}
+  atkSkillPower: 7
