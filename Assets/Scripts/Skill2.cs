@@ -4,34 +4,16 @@ using UnityEngine;
 
 public class Skill2 : AtkSkill
 {
-    //[SerializeField]
-    //private string skillName;
-
-    //[SerializeField]
-    //private string description;
-
-    // Start is called before the first frame update
-    public override void Setup()
+    public override void SetupSkill()
     {
-        base.Setup();
-        SetupSkill();
+        OnSkill += UsingSkill;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetupSkill()
-    {
-        skillName = skillName;
-        //_description = description;
-        OnSkill += Skillsita1;
-    }
-
-    private void Skillsita1()
+    private void UsingSkill()
     {
         print("skill Name: " + skillName + "\n" + "Skill type: " + skillType + "\n" + "Skill Affinity: " + skillAffinity + "\n" + "Skill power: " + skillPower + "\n" + "Description: " + description + "\n");
+        Health enemyHealth = GameManager.Instance.GetEnemy(owner).GetComponent<Health>();
+        float dmg = owner.BaseAtk + skillPower;
+        enemyHealth.TakeDamage(dmg, skillAffinity);
     }
 
 }

@@ -15,10 +15,29 @@ public abstract class Skill : MonoBehaviour
     protected float skillPower;
     [SerializeField]
     protected string description;
+    [SerializeField]
+    protected Critter owner;
 
+    public string GetSkillName
+    {
+        get
+        {
+            return skillName;
+        }
+    }
+
+    public string GetDescription
+    {
+        get
+        {
+            return description;
+        }
+    }
 
     public Action OnSkill;
-    public abstract void Setup();
+    public abstract void Setup(Critter owner);
+
+    public abstract void SetupSkill();
 }
 
 

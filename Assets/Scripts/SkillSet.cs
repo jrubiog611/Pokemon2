@@ -13,6 +13,8 @@ public class SkillSet : MonoBehaviour
     [SerializeField]
     private Skill skill3;
 
+    private Critter owner;
+
     private List<Skill> skills = new List<Skill>();
 
     public List<Skill> Skills
@@ -24,9 +26,9 @@ public class SkillSet : MonoBehaviour
          
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        owner = transform.GetComponent<Critter>();
     }
 
     // Update is called once per frame
@@ -35,22 +37,15 @@ public class SkillSet : MonoBehaviour
         
     }
 
-    public void UseAllSkill()
-    {
-        for (int i = 0; i < skills.Count; i++)
-        {
-            skills[i].OnSkill();
-        }
-    }
 
     public void SetupAllSkills()
     {
-        skills.Add(skill1);
-        skills.Add(skill2);
-        skills.Add(skill3);
-        for (int i = 0; i < skills.Count; i++)
+        skills.Add(Instantiate(skill1,transform));
+        skills.Add(Instantiate(skill2,transform));
+        skills.Add(Instantiate(skill3,transform));
+        foreach (var item in skills)
         {
-            skills[i].Setup();
+            item.Setup(owner);
         }
     }
 }

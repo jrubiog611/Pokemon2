@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Bola de fuego
   skillType: 0
-  skillAffinity: 0
+  skillAffinity: 2
   description: Lanza una bola de fuego al enemigo
+  owner: {fileID: 0}
   atkSkillPower: 5
